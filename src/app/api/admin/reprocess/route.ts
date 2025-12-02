@@ -3,6 +3,7 @@ import { stripe } from '@/lib/stripe';
 import { appendToSheet } from '@/lib/googleSheets';
 
 export const dynamic = 'force-dynamic';
+export const runtime = 'nodejs';
 
 export async function POST(request: NextRequest) {
   try {

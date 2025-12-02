@@ -1,4 +1,27 @@
-import { google } from 'googleapis';
+import { google, sheets_v4 } from 'googleapis';
+
+// Don't initialize at module level - do it lazily
+let sheetsClient: sheets_v4.Sheets | null = null;
+
+function getSheetsClient() {
+  if (sheetsClient) return sheetsClient;
+  
+  // Only initialize when actually called (at runtime, not build time)
+  if (!process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL || !process.env.GOOGLE_PRIVATE_KEY) {
+    throw new Error('Google Sheets credentials not configured');
+  }
+  
+  const auth = new google.auth.GoogleAuth({
+    credentials: {
+      client_email: process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL,
+      private_key: process.env.GOOGLE_PRIVATE_KEY.replace(/\\n/g, '\n'),
+    },
+    scopes: ['https://www.googleapis.com/auth/spreadsheets'],
+  });
+
+  sheetsClient = google.sheets({ version: 'v4', auth });
+  return sheetsClient;
+}
 
 export async function appendToSheet(data: {
   fullName: string;
@@ -23,16 +46,8 @@ export async function appendToSheet(data: {
     }
 
     console.log('Authenticating with Google Sheets API...');
-    
-    const auth = new google.auth.GoogleAuth({
-      credentials: {
-        client_email: process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL,
-        private_key: process.env.GOOGLE_PRIVATE_KEY.replace(/\\n/g, '\n'),
-      },
-      scopes: ['https://www.googleapis.com/auth/spreadsheets'],
-    });
 
-    const sheets = google.sheets({ version: 'v4', auth });
+    const sheets = getSheetsClient();
 
     const timestamp = new Date().toISOString();
     
