@@ -1,0 +1,59 @@
+# Dependencies
+/node_modules
+/.pnp
+.pnp.js
+
+# Testing
+/coverage
+
+# Next.js
+/.next/
+/out/
+
+# Production
+/build
+
+# Misc
+.DS_Store
+*.pem
+
+# Debug logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# Environment variables (DO NOT COMMIT SECRETS)
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Vercel
+.vercel
+
+# TypeScript
+*.tsbuildinfo
+next-env.d.ts
+
+# --- IDEs & Editors ---
+
+# VS Code / Cursor / Antigravity (Shared Configuration)
+.vscode/*
+# !.vscode/extensions.json    # Uncomment to share recommended extensions
+# !.vscode/settings.json      # Uncomment to share project settings
+# !.vscode/tasks.json         # Uncomment to share build tasks
+# !.vscode/launch.json        # Uncomment to share debug configs
+*.code-workspace
+
+# Cursor Specific
+# .cursorrules is usually COMMITTED to share prompts with the team.
+# Only ignore it if you have private instructions.
+# .cursorignore               # Ignore if you want local-only indexing rules
+
+# Google Antigravity Specific
+# As of the Nov 2025 release, artifacts (screenshots, plans) might be generated.
+.antigravity/
+antigravity_artifacts/
+*.rec                         # In case screen recordings are saved locally
