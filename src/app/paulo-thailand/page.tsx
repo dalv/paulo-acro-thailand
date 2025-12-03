@@ -228,7 +228,7 @@ export default function PauloThailandPage() {
                     autoPlay
                     muted
                     loop
-                    className="h-full w-full object-cover object-[50%_60%] sm:object-[50%_65%]"
+                    className="h-full w-full object-cover object-[50%_65%] sm:object-[50%_65%]"
                   >
                     Your browser does not support the video tag.
                   </video>
