@@ -9,12 +9,19 @@ export default function Success() {
         <p className="text-gray-600 mb-6">
           Thank you for registering. You'll receive a confirmation email shortly.
         </p>
-        
-        <a href="/"
+        <a 
+          href="/"
           className="inline-block bg-blue-600 text-white py-2 px-6 rounded-lg font-semibold hover:bg-blue-700 transition"
         >
           Back to Home
         </a>
+        
+        {/* Test Mode Notice - Remove this when going live */}
+        <div className="mt-8 p-3 bg-amber-50 border border-amber-200 rounded-lg">
+          <p className="text-amber-800 text-sm">
+            ⚠️ <strong>Test Mode:</strong> This is a demo environment. No actual payment was processed and no money was charged.
+          </p>
+        </div>
       </div>
     </div>
   );
