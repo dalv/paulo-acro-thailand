@@ -343,6 +343,7 @@ export default function PauloThailandPage() {
                   <div className="font-semibold text-gray-600 mb-1">
                     {!isEarlyBird ? '→ ' : ''}Regular
                     {!isEarlyBird && <span className="text-xs font-normal ml-1">(now)</span>}
+                    {isEarlyBird && <span className="text-xs font-normal ml-1">(after Jan 2nd)</span>}
                   </div>
                   <div className="text-gray-600">
                     <span className="font-bold">€100</span> full weekend
