@@ -329,11 +329,11 @@ export default function PauloThailandPage() {
                     {isEarlyBird && <span className="text-xs font-normal ml-1">(now!)</span>}
                   </div>
                   <div className="text-teal-700">
-                    <span className="font-bold">€80</span> full weekend
+                    <span className="font-bold">€100</span> full weekend
                     <span className="text-teal-500 text-xs ml-1 line-through">€120</span>
                   </div>
                   <div className="text-teal-600">
-                    <span className="font-bold">€25</span>/session
+                    <span className="font-bold">€30</span>/session
                     <span className="text-teal-500 text-xs ml-1 line-through">€30</span>
                   </div>
                 </div>
@@ -345,11 +345,11 @@ export default function PauloThailandPage() {
                     {isEarlyBird && <span className="text-xs font-normal ml-1">(after Jan 2nd)</span>}
                   </div>
                   <div className="text-gray-600">
-                    <span className="font-bold">€100</span> full weekend
+                    <span className="font-bold">€120</span> full weekend
                     <span className="text-gray-400 text-xs ml-1 line-through">€120</span>
                   </div>
                   <div className="text-gray-500">
-                    <span className="font-bold">€30</span>/session
+                    <span className="font-bold">€35</span>/session
                   </div>
                 </div>
               </div>
