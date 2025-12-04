@@ -56,6 +56,21 @@ const sessions: Session[] = [
   },
 ];
 
+// Test session for development - controlled by NEXT_PUBLIC_SHOW_TEST_SESSION env var
+const TEST_SESSION: Session = {
+  id: 'test-session',
+  date: 'Test',
+  time: 'Dev Only',
+  name: 'Test Session (1€)',
+  timeRange: 'N/A',
+  description: 'This is a test session for development purposes only. Price: 1 Euro.',
+  prereqs: 'None',
+  image: '/images/martini.jpg',
+};
+
+const SHOW_TEST_SESSION = process.env.NEXT_PUBLIC_SHOW_TEST_SESSION === 'true';
+const displaySessions = SHOW_TEST_SESSION ? [...sessions, TEST_SESSION] : sessions;
+
 // Pricing configuration
 const PRICING = {
   earlyBird: {
@@ -87,29 +102,38 @@ export default function PauloThailandPage() {
   }, []);
 
   const pricing = useMemo(() => {
+    const hasTestSession = formData.selectedSessions.includes('test-session');
+    const regularSessionCount = hasTestSession
+      ? formData.selectedSessions.length - 1
+      : formData.selectedSessions.length;
     const sessionCount = formData.selectedSessions.length;
-    const isFullWeekend = sessionCount === FULL_WEEKEND_SESSION_COUNT;
-    
-    const referencePrice = sessionCount * PRICING.regular.singleSession;
-    
+    const isFullWeekend = regularSessionCount === FULL_WEEKEND_SESSION_COUNT;
+
+    const referencePrice = regularSessionCount * PRICING.regular.singleSession + (hasTestSession ? 1 : 0);
+
     let actualPrice: number;
     let appliedDeal: string | null = null;
-    
+
     if (isFullWeekend) {
       actualPrice = isEarlyBird ? PRICING.earlyBird.fullWeekend : PRICING.regular.fullWeekend;
       appliedDeal = isEarlyBird ? 'Early Bird Full Weekend' : 'Full Weekend Bundle';
-    } else if (sessionCount > 0) {
+    } else if (regularSessionCount > 0) {
       const perSession = isEarlyBird ? PRICING.earlyBird.singleSession : PRICING.regular.singleSession;
-      actualPrice = sessionCount * perSession;
+      actualPrice = regularSessionCount * perSession;
       if (isEarlyBird) {
         appliedDeal = 'Early Bird';
       }
     } else {
       actualPrice = 0;
     }
-    
+
+    // Add test session price (1 Euro)
+    if (hasTestSession) {
+      actualPrice += 1;
+    }
+
     const savings = referencePrice - actualPrice;
-    
+
     return {
       sessionCount,
       isFullWeekend,
@@ -394,7 +418,7 @@ export default function PauloThailandPage() {
 
             {/* Session Cards with Accordion */}
             <div className="space-y-3">
-              {sessions.map((session) => {
+              {displaySessions.map((session) => {
                 const isSelected = formData.selectedSessions.includes(session.id);
                 const isExpanded = expandedSessions.has(session.id);
                 

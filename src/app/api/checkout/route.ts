@@ -42,7 +42,7 @@ export async function POST(request: NextRequest) {
             currency: 'eur',
             product_data: {
               name: 'Acrobatics Workshop - Koh Phangan',
-              description: sessionDetails,
+              ...(sessionDetails ? { description: sessionDetails } : {}),
             },
             unit_amount: totalAmount * 100,
           },
