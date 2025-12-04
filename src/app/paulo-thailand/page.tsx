@@ -470,7 +470,7 @@ export default function PauloThailandPage() {
                           <img
                             src={session.image}
                             alt={session.name}
-                            className="w-24 aspect-square sm:aspect-auto sm:self-stretch object-cover rounded-lg flex-shrink-0"
+                            className="w-24 aspect-square sm:aspect-auto self-start sm:self-stretch object-cover rounded-lg flex-shrink-0"
                           />
                           <div className="space-y-3 flex-1 min-w-0">
                             <div>
