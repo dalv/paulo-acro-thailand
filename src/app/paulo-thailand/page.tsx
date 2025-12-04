@@ -386,15 +386,15 @@ export default function PauloThailandPage() {
                     {isEarlyBird && <span className="text-xs font-normal ml-1">(now!)</span>}
                   </div>
                   <div className="text-teal-700">
-                    <span className="font-bold">€100</span> full weekend
-                    <span className="text-teal-500 text-xs ml-1 line-through">€140</span>
+                    <span className="font-bold">€{PRICING.earlyBird.fullWeekend}</span> full weekend
+                    <span className="text-teal-500 text-xs ml-1 line-through">€{FULL_WEEKEND_SESSION_COUNT * PRICING.regular.singleSession}</span>
                   </div>
                   <div className="text-teal-600">
-                    <span className="font-bold">€30</span>/session
-                    <span className="text-teal-500 text-xs ml-1 line-through">€35</span>
+                    <span className="font-bold">€{PRICING.earlyBird.singleSession}</span>/session
+                    <span className="text-teal-500 text-xs ml-1 line-through">€{PRICING.regular.singleSession}</span>
                   </div>
                 </div>
-                
+
                 <div className={`${isEarlyBird ? 'opacity-50' : ''}`}>
                   <div className="font-semibold text-gray-600 mb-1">
                     {!isEarlyBird ? '→ ' : ''}Regular
@@ -402,11 +402,11 @@ export default function PauloThailandPage() {
                     {isEarlyBird && <span className="text-xs font-normal ml-1">(after Jan 2nd)</span>}
                   </div>
                   <div className="text-gray-600">
-                    <span className="font-bold">€120</span> full weekend
-                    <span className="text-gray-400 text-xs ml-1 line-through">€140</span>
+                    <span className="font-bold">€{PRICING.regular.fullWeekend}</span> full weekend
+                    <span className="text-gray-400 text-xs ml-1 line-through">€{FULL_WEEKEND_SESSION_COUNT * PRICING.regular.singleSession}</span>
                   </div>
                   <div className="text-gray-500">
-                    <span className="font-bold">€35</span>/session
+                    <span className="font-bold">€{PRICING.regular.singleSession}</span>/session
                   </div>
                 </div>
               </div>
