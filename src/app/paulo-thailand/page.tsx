@@ -10,6 +10,7 @@ type Session = {
   timeRange: string;
   description: string;
   prereqs: string;
+  image: string;
 };
 
 const sessions: Session[] = [
@@ -21,6 +22,7 @@ const sessions: Session[] = [
     timeRange: '13:00 - 16:00',
     description: 'Explore challenging washing machine sequences with dynamic transitions. Focus on building stamina and precision through continuous movement patterns.',
     prereqs: 'Comfortable with basic washing machines: Ninja Star, Ballerina',
+    image: '/images/hard-flow.jpg',
   },
   {
     id: 'jan16-evening',
@@ -30,6 +32,7 @@ const sessions: Session[] = [
     timeRange: '17:00 - 20:00',
     description: 'Refining Icarians - become more comfortable with the foundations of timing, trust, and technique needed for safe and confident pops.',
     prereqs: 'Experience with basic straight throws (bird to bird, throne to throne)',
+    image: '/images/castaway.jpg',
   },
   {
     id: 'jan17-morning',
@@ -39,6 +42,7 @@ const sessions: Session[] = [
     timeRange: '10:00 - 13:00',
     description: 'Develop hands-free sequences using the right balance and momentum. Perfect for building creativity and trust in your partnership.',
     prereqs: 'Comfortable with star, side star and basic washing machines',
+    image: '/images/no-hands-flow.jpg',
   },
   {
     id: 'jan17-afternoon',
@@ -48,6 +52,7 @@ const sessions: Session[] = [
     timeRange: '14:30 - 17:30',
     description: 'Building on Part I, explore variations, catches, and more complicated icarians. For those ready to take their icarian work to the next level.',
     prereqs: 'Consistent strainght throws and experience with bird to throne / throne to bird',
+    image: '/images/fronttuck.jpg',
   },
 ];
 
@@ -213,7 +218,7 @@ export default function PauloThailandPage() {
           <div className="absolute inset-0 flex items-center justify-center">
             <div className="z-10 text-center">
               <h1 className="text-3xl font-bold text-white mt-2 tracking-tight drop-shadow-lg">
-                Paulo from Portugal
+                Paulo from Portugal and Asti
               </h1>
               <p className="text-teal-100 font-medium drop-shadow">Intensive Acro Training</p>
             </div>
@@ -224,16 +229,23 @@ export default function PauloThailandPage() {
           {/* Venue Info */}
           <div className="mb-8 text-center sm:text-left">
             <div className="flex flex-col sm:flex-row sm:justify-between sm:items-end border-b border-gray-100 pb-6 mb-6">
-              <div>
-                <h2 className="text-2xl font-semibold text-gray-900">Sati Yoga</h2>
-                <p className="text-gray-500 flex items-center justify-center sm:justify-start gap-1 mt-1">
+              <a
+                href="https://maps.app.goo.gl/oSCpY9NASgY3HbRL6"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group block"
+              >
+                <h2 className="text-2xl font-semibold text-gray-900 group-hover:underline">
+                  Sati Yoga
+                </h2>
+                <p className="text-gray-500 flex items-center justify-center sm:justify-start gap-1 mt-1 group-hover:underline">
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
                   </svg>
                   Koh Phangan, Thailand
                 </p>
-              </div>
+              </a>
               <div className="mt-4 sm:mt-0 text-teal-600 font-semibold text-sm bg-teal-50 px-3 py-1 rounded-full inline-block">
                 Jan 16 - 17
               </div>
@@ -258,10 +270,10 @@ export default function PauloThailandPage() {
             </div>
             <div className="text-gray-600 leading-relaxed space-y-3">
               <p>
-                Paulo from Portugal is coming to Koh Phangan for a few days to share his acro experience with the local community.
+                Paulo from Portugal and Asti are coming to Koh Phangan for a few days to share their acro experience with the local community.
               </p>
               <p>
-                His workshops offer a challenging yet accessible approach to unlocking common issues with flows and icarians, helping you elevate your practice through technical refinement and playful movement.
+                Their workshops offer a challenging yet accessible approach to unlocking common issues with flows and icarians, helping you elevate your practice through technical refinement and playful movement.
               </p>
               <p>
                 Sign up below to secure your spot!
@@ -450,27 +462,34 @@ export default function PauloThailandPage() {
                       }`}
                     >
                       <div className={`px-4 pb-4 pt-3 border border-t-0 rounded-b-xl ${
-                        isSelected 
-                          ? 'bg-teal-50/50 border-teal-600' 
+                        isSelected
+                          ? 'bg-teal-50/50 border-teal-600'
                           : 'border-gray-200 bg-gray-50'
                       }`}>
-                        <div className="space-y-3">
-                          <div>
-                            <div className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1">
-                              About this workshop
+                        <div className="flex gap-4">
+                          <img
+                            src={session.image}
+                            alt={session.name}
+                            className="w-24 object-cover rounded-lg flex-shrink-0 self-stretch"
+                          />
+                          <div className="space-y-3 flex-1 min-w-0">
+                            <div>
+                              <div className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1">
+                                About this workshop
+                              </div>
+                              <p className="text-sm text-gray-700 leading-relaxed">
+                                {session.description}
+                              </p>
                             </div>
-                            <p className="text-sm text-gray-700 leading-relaxed">
-                              {session.description}
-                            </p>
-                          </div>
-                          
-                          <div>
-                            <div className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1">
-                              Prerequisites
+
+                            <div>
+                              <div className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1">
+                                Prerequisites
+                              </div>
+                              <p className="text-sm text-gray-700 leading-relaxed">
+                                {session.prereqs}
+                              </p>
                             </div>
-                            <p className="text-sm text-gray-700 leading-relaxed">
-                              {session.prereqs}
-                            </p>
                           </div>
                         </div>
                       </div>
