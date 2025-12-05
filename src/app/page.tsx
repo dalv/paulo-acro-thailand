@@ -155,6 +155,9 @@ export default function LandingPage() {
 
       {/* Footer */}
       <footer className="relative z-10 py-8 text-center">
+        <p className="text-white/40 text-sm mb-4">
+          For colab, contact: <a href="mailto:contact@acrovents.com" className="text-teal-400 hover:text-teal-300 transition-colors">contact@acrovents.com</a>
+        </p>
         <p className="text-white/20 text-xs tracking-widest">
           © 2025 ACRO EVENTS
         </p>
