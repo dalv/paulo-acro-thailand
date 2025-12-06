@@ -10,7 +10,7 @@ export default function Cancel() {
             Your registration was not completed. No charges were made.
           </p>
           
-          <a href="/"
+          <a href="/paulo-thailand"
             className="inline-block bg-blue-600 text-white py-2 px-6 rounded-lg font-semibold hover:bg-blue-700 transition"
           >
             Try Again
